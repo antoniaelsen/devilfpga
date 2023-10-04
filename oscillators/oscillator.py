@@ -5,15 +5,29 @@ from phase_accumulator import PhaseAccumulator
 
 
 class Oscillator(Elaboratable):
-    """
-    A generic waveform generator
+    """A generic waveform generator.
+
+    Synthesizes a waveform via DDS; a combination of a phase accumulator and lookup table.
+    The lookup table is generated using the passed lut_generator function.
+
+    Parameters
+    ----------
+    f_clk : int
+        The clock frequency.
+    lut_width : int
+        The width in bits of the waveform LUT elements.
+    lut_depth : int
+        The word count (# of storage elements) of the waveform LUT.
+    lut_generator : Function(i: int, width: int, depth: int)
+        A function that will generate the values of the waveform LUT.
+
     """
 
     def __init__(self,
-                 f_clk,             # clock frequency
-                 lut_width,         # LUT value size
-                 lut_depth,         # LUT word count
-                 lut_generator,     # LUT value generator
+                 f_clk: int,
+                 lut_width: int,
+                 lut_depth: int,
+                 lut_generator,
                  ):
         self.f_clk = f_clk
         self.lut_width = lut_width

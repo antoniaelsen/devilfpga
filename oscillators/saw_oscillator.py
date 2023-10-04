@@ -3,21 +3,29 @@ from amaranth.sim import Simulator
 from oscillator import Oscillator
 
 
-def identity(i, width, depth):
+def identity(i: int, width: int, depth: int):
     return math.ceil(i * (2 ** width - 1) / (2 ** depth - 1))
 
 
 class SawOscillator(Oscillator):
-    """
-    A sawtooth waveform generator
+    """A sawtooth waveform generator.
 
-    The waveform is synthesized via DDS; a combination of a phase accumulator and lookup table.
+    Synthesizes a sawtooth waveform via DDS; a combination of a phase accumulator and lookup table.
     While strictly speaking a LUT is not needed for a sawtooth waveform when using a phase accumulator
     (since the phase accumulates linearly, and the output signal wraps back to 0 when it overflows -- like a saw...),
-    a LUT is still used to leave room for simulating quirks from the circuit of the TR-303.
+    a LUT is still used to leave room for simulating quirks from the circuit of the TB-303.
+
+    Parameters
+    ----------
+    f_clk : int
+        The clock frequency.
+    lut_width : int
+        The width in bits of the waveform LUT elements.
+    lut_depth : int
+        The word count (# of storage elements) of the waveform LUT.
     """
 
-    def __init__(self, f_clk, lut_width, lut_depth):
+    def __init__(self, f_clk: int, lut_width: int, lut_depth: int):
         super().__init__(f_clk, lut_width, lut_depth, identity)
 
 

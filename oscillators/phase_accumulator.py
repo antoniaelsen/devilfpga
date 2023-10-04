@@ -14,10 +14,7 @@ class PhaseAccumulator(Elaboratable):
     oscillates at the target frequency.
     """
 
-    def __init__(self,
-                 f_clk,
-                 output_width
-                 ):
+    def __init__(self, f_clk: int, output_width: int):
         self.output_width = output_width
         self.phase_acc_width = 32
 
@@ -31,9 +28,6 @@ class PhaseAccumulator(Elaboratable):
         self.s_phase_acc = Signal(self.phase_acc_width)
 
         self.f_clk = f_clk
-
-    def __repr__(self):
-        print(f"< PhaseAccumulator >")
 
     def elaborate(self, _) -> Module:
         """
