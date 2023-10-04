@@ -1,2 +1,5 @@
-# Signals
+# Validation
 *.vcd
+
+# General
+*.local
