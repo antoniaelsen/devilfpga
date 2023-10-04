@@ -32,6 +32,9 @@ class PhaseAccumulator(Elaboratable):
 
         self.f_clk = f_clk
 
+    def __repr__(self):
+        print(f"< PhaseAccumulator >")
+
     def elaborate(self, _) -> Module:
         """
         To achieve a target frequency Ft,
@@ -65,7 +68,7 @@ if __name__ == "__main__":
 
     dut = PhaseAccumulator(f_clk, output_width)
     sim = Simulator(dut)
-    sim.add_clock(1e-8)
+    sim.add_clock(1 / f_clk)
 
     def bench():
         yield dut.i_reset.eq(1)
