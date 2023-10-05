@@ -1,0 +1,16 @@
+{
+  "data": {
+    "magic": "APF_VER_1",
+    "data_slots": [
+      {
+        "name": "Background",
+        "id": 1,
+        "required": true,
+        "parameters": 3,
+        "extensions": ["bin"],
+        "size_exact": 0,
+        "address": "0x00000000"
+      }
+    ]
+  }
+}
