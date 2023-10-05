@@ -1,6 +1,6 @@
 import math
 from amaranth.sim import Simulator
-from oscillator import Oscillator
+from oscillators.oscillator import Oscillator
 
 
 def identity(i: int, width: int, depth: int):
