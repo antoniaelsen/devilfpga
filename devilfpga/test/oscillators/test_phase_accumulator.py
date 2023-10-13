@@ -1,6 +1,6 @@
 import math
 from amaranth.sim import Simulator
-from oscillators.phase_accumulator import PhaseAccumulator
+from ...oscillators.phase_accumulator import PhaseAccumulator
 
 
 def test_phase_accumulator():

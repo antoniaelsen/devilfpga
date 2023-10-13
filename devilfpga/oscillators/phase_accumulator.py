@@ -3,12 +3,6 @@ from amaranth import Elaboratable, Module, Signal
 
 class PhaseAccumulator(Elaboratable):
     """A phase accumulator for DDS.
-
-    The phase accumulator is a counter that is incremented by a phase increment
-    value. The increment is informed by the target frequency, the clock frequency,
-    and the resolution of the phase accumulator, such that incrementing the phase
-    accumulator every clock cycle will sample a LUT to generate a waveform that
-    oscillates at the target frequency.
     """
 
     def __init__(self, f_clk: int, output_width: int):
@@ -48,3 +42,12 @@ class PhaseAccumulator(Elaboratable):
         m.d.sync += self.s_phase_acc.eq(self.s_phase_acc + self.o_inc)
 
         return m
+
+    def ports(self):
+        return [
+            self.i_enable,
+            self.i_reset,
+            self.i_f_target,
+            self.o_inc,
+            self.o_i,
+        ]

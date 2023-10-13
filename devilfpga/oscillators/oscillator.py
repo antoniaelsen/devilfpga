@@ -1,7 +1,7 @@
 import math
 from amaranth import Elaboratable, Memory, Module, Signal
 
-from oscillators.phase_accumulator import PhaseAccumulator
+from phase_accumulator import PhaseAccumulator
 
 
 class Oscillator(Elaboratable):
@@ -65,3 +65,12 @@ class Oscillator(Elaboratable):
         ]
 
         return m
+
+    def ports(self):
+        return [
+            self.i_enable,
+            self.i_reset,
+            self.i_f_target,
+            self.o_a,
+            self.o_i,
+        ]

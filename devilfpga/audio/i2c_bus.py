@@ -1,5 +1,4 @@
-from amaranth import ClockDomain, ClockSignal, Elaboratable, Module, Signal
-from amaranth.sim import Simulator
+from amaranth import Elaboratable, Module, Signal
 
 
 class I2CBus(Elaboratable):
@@ -65,36 +64,11 @@ class I2CBus(Elaboratable):
 
         return m
 
-
-# Instantiate the simulator and run the test bench
-if __name__ == "__main__":
-    dut = I2CBus()
-    sim = Simulator(dut)
-    sim.add_clock(1 / (48000 * 256))
-
-    def bench():
-        yield dut.mclk.eq(0)
-        yield dut.lrclk.eq(0)
-        yield dut.o_audio.eq(0)
-        yield
-        assert (yield dut.o_audio) == 0
-
-        yield dut.mclk.eq(1)
-
-        for _ in range(64):  # 64 SCLK cycles per sample
-            yield dut.aud_adc.eq(0xABCD)  # Simulated audio data
-            yield
-
-            # Check if audio output is as expected
-            if (yield dut.lrclk):
-                # Right channel
-                # Check audio data for right channel
-                assert (yield dut.o_audio) == 0xABCD
-            else:
-                # Left channel
-                # Check audio data for left channel
-                assert (yield dut.o_audio) == 0xABCD
-
-    sim.add_sync_process(bench)
-    with sim.write_vcd("saw_oscillator.vcd"):
-        sim.run()
+    def ports(self):
+        return [
+            self.i_audio,
+            self.o_audio,
+            self.lrclk,
+            self.mclk,
+            self.sclk,
+        ]

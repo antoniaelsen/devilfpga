@@ -1,7 +1,7 @@
 # FPGACID
 
 A recreation of the Roland TB-303 synthesizer on an FPGA. Why? Because.
-Targeting the FPGA in the Analogue Pocket, packaging the build as an OpenFPGA core. [Amaranth](https://amaranth-lang.org/docs/amaranth/latest/cover.html) HDL.
+Targeting the FPGA in the Analogue Pocket (Altera Cyclone V ACM-027-A4?), packaging the build as an OpenFPGA core. [Amaranth](https://amaranth-lang.org/docs/amaranth/latest/cover.html) HDL.
 
 Omitting the sequencer, for now. Accent and glide seem crucial, so hopefully, soon(tm).
 
