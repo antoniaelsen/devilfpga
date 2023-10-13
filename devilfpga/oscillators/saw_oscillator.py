@@ -1,5 +1,5 @@
 import math
-from oscillator import Oscillator
+from .oscillator import Oscillator
 
 import matplotlib.pyplot as plt
 

@@ -1,7 +1,7 @@
 import math
 from amaranth import Elaboratable, Memory, Module, Signal
 
-from phase_accumulator import PhaseAccumulator
+from .phase_accumulator import PhaseAccumulator
 
 
 class Oscillator(Elaboratable):

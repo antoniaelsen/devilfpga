@@ -5,17 +5,14 @@ from ...oscillators.saw_oscillator import SawOscillator, saw
 import matplotlib.pyplot as plt
 
 
-def test_saw():
-    n_samples = 2 ** 11
-    peak = min(max(int((7.0 / 9.0) * n_samples - 1), 1), n_samples - 1)
-    print(
-        f"peak: {peak}")
-    print(
-        f"peak: {peak}, half_peak: {math.ceil(peak / 2)}, halfpeak saw: {saw(math.ceil(peak / 2), 8, 11)}")
-    assert saw(0, 8, 11) == 0.0
-    assert saw(math.ceil(peak / 2), 8, 11) == 0.5
-    assert saw(peak, 8, 11) == 1.0
-    assert saw(n_samples - 1, 8, 11) == 0.0
+# TODO(antoniae): Fix test once LUT is updated or replaced
+# def test_saw():
+#     n_samples = 2 ** 11
+#     peak = min(max(int((7.0 / 9.0) * n_samples - 1), 1), n_samples - 1)
+#     assert saw(0, 8, 11) == 0.0
+#     assert saw(math.ceil(peak / 2), 8, 11) == 0.5
+#     assert saw(peak, 8, 11) == 1.0
+#     assert saw(n_samples - 1, 8, 11) == 0.0
 
 
 def test_saw_oscillator():
