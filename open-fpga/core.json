@@ -3,7 +3,7 @@
     "magic": "APF_VER_1",
     "metadata": {
       "platform_ids": [],
-      "shortname": "FPGACID",
+      "shortname": "devilfpga",
       "description": "Roland TB-303 on FPGA",
       "author": "antoniaelsen",
       "url": "https://github.com/antoniaelsen/fpgacid",
