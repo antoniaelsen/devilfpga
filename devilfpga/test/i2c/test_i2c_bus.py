@@ -1,5 +1,5 @@
 from amaranth.sim import Simulator
-from ...audio.i2c_bus import I2CBus
+from ...i2c.i2c_bus import I2CBus
 
 
 # def test_i2c_bus():
